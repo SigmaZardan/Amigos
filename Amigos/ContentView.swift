@@ -10,17 +10,48 @@ import SwiftUI
 struct ContentView: View {
     @State private var people = [Person]()
 
+    var sortedPeople: [Person] {
+        people
+            .sorted(
+                by: { person1, person2 in
+                    person1.friends.count > person2.friends.count
+                }
+            )
+    }
+
     var body: some View {
-        VStack {
-            List(people, id: \.id) { person in
-                Text(person.name)
-            }.task {
-                if people.isEmpty {
-                    await loadData()
+        NavigationStack {
+            ZStack {
+                LinearGradient(
+                       gradient: Gradient(colors: [
+                           Color(red: 1.0, green: 0.435, blue: 0.380),
+                           Color(red: 0.8, green: 0.2, blue: 0.3)
+                       ]),
+                       startPoint: .top,
+                       endPoint: .bottom
+                   )
+                   .ignoresSafeArea()
+
+                ScrollView {
+                    LazyVStack {
+                        ForEach(sortedPeople, id: \.id) { person in
+                            NavigationLink(value: person, label:{
+                                PersonNavigationCardView(person: person)
+                            })
+                        }
+                    }.task {
+                        if people.isEmpty {
+                            await loadData()
+                        }
+                    }
                 }
             }
+            .navigationTitle("Amigos")
+            .navigationDestination(for: Person.self) {person in
+                PersonDetailView(person: person)
+            }
+            .preferredColorScheme(.dark)
         }
-        .padding()
     }
     // load data from url
 
@@ -41,6 +72,8 @@ struct ContentView: View {
         }
     }
 }
+
+
 
 #Preview {
     ContentView()

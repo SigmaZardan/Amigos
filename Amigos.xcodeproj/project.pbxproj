@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		60E9EC2C2CDC5C7D00EAEE79 /* PersonNavigationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9EC2B2CDC5C7D00EAEE79 /* PersonNavigationCardView.swift */; };
+		60E9EC5A2CDC9A0700EAEE79 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9EC592CDC9A0700EAEE79 /* PersonDetailView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		60413F102CDB46C0002EDB0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		60413EFF2CDB46BE002EDB0E /* Amigos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Amigos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60413F0F2CDB46C0002EDB0E /* AmigosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60413F192CDB46C1002EDB0E /* AmigosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60E9EC2B2CDC5C7D00EAEE79 /* PersonNavigationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonNavigationCardView.swift; sourceTree = "<group>"; };
+		60E9EC592CDC9A0700EAEE79 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +82,8 @@
 		60413EF62CDB46BE002EDB0E = {
 			isa = PBXGroup;
 			children = (
+				60E9EC592CDC9A0700EAEE79 /* PersonDetailView.swift */,
+				60E9EC2B2CDC5C7D00EAEE79 /* PersonNavigationCardView.swift */,
 				60413F012CDB46BE002EDB0E /* Amigos */,
 				60413F122CDB46C0002EDB0E /* AmigosTests */,
 				60413F1C2CDB46C1002EDB0E /* AmigosUITests */,
@@ -236,6 +245,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E9EC2C2CDC5C7D00EAEE79 /* PersonNavigationCardView.swift in Sources */,
+				60E9EC5A2CDC9A0700EAEE79 /* PersonDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
