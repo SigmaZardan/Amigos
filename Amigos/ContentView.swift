@@ -64,11 +64,11 @@ struct ContentView: View {
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            if let decodedData = try? JSONDecoder().decode([Person].self, from: data) {
-                people = decodedData
-            }
+            let decodedData = try JSONDecoder().decode([Person].self, from: data)
+            people = decodedData
         }catch {
-            print("Invalid Data!, Error: \(error.localizedDescription)")
+//            print("Invalid Data!, Error: \(error.localizedDescription)")
+            print(String(describing: error))
         }
     }
 }
