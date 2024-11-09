@@ -4,11 +4,12 @@
 //
 //  Created by Bibek Bhujel on 06/11/2024.
 //
-
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @State private var people = [Person]()
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: \Person.name) var people: [Person]
 
     var sortedPeople: [Person] {
         people
@@ -17,7 +18,7 @@ struct ContentView: View {
                     person1.friends.count > person2.friends.count
                 }
             )
-    }
+      }
 
     var body: some View {
         NavigationStack {
@@ -65,7 +66,9 @@ struct ContentView: View {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decodedData = try JSONDecoder().decode([Person].self, from: data)
-            people = decodedData
+            for data in decodedData {
+                modelContext.insert(data)
+            }
         }catch {
 //            print("Invalid Data!, Error: \(error.localizedDescription)")
             print(String(describing: error))

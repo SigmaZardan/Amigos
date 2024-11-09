@@ -21,6 +21,7 @@ class Person: Codable {
     var tags: [String]
     var friends: [Friend]
 
+
     init(
         id: String,
         isActive: Bool,
@@ -70,18 +71,28 @@ class Person: Codable {
         isActive = try container.decode(Bool.self, forKey: .isActive)
         name = try container.decode(String.self, forKey: .name)
         age = try container.decode(Int.self, forKey: .age)
-        company = try container.decode(String.self, forKey: .id)
-        email = try container.decode(String.self, forKey: .id)
-        address = try container.decode(String.self, forKey: .id)
-        about = try container.decode(String.self, forKey: .id)
-        registered = try container.decode(String.self, forKey: .id)
+        company = try container.decode(String.self, forKey: .company)
+        email = try container.decode(String.self, forKey: .email)
+        address = try container.decode(String.self, forKey: .address)
+        about = try container.decode(String.self, forKey: .about)
+        registered = try container.decode(String.self, forKey: .registered)
         tags = try container.decode([String].self, forKey: .tags)
         friends = try container.decode([Friend].self, forKey: .friends)
     }
 
 
     func encode(to encoder: any Encoder) throws {
-
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.isActive, forKey: .isActive)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.age, forKey: .age)
+        try container.encode(self.company, forKey: .company)
+        try container.encode(self.email, forKey: .email)
+        try container.encode(self.address, forKey: .address)
+        try container.encode(self.about, forKey: .about)
+        try container.encode(self.registered, forKey: .registered)
+        try container.encode(self.tags, forKey: .tags)
+        try container.encode(self.friends, forKey: .friends)
     }
 }
 
@@ -107,5 +118,8 @@ class Friend: Codable {
     }
 
     func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
     }
 }
