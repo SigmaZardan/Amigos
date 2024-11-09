@@ -17,7 +17,7 @@ class Person: Codable {
     var email: String
     var address: String
     var about: String
-    var registered: String
+    var registered: Date
     var tags: [String]
     var friends: [Friend]
 
@@ -31,7 +31,7 @@ class Person: Codable {
         email: String,
         address: String,
         about: String,
-        registered: String,
+        registered: Date,
         tags: [String],
         friends: [Friend]
     ) {
@@ -75,7 +75,7 @@ class Person: Codable {
         email = try container.decode(String.self, forKey: .email)
         address = try container.decode(String.self, forKey: .address)
         about = try container.decode(String.self, forKey: .about)
-        registered = try container.decode(String.self, forKey: .registered)
+        registered = try container.decode(Date.self, forKey: .registered)
         tags = try container.decode([String].self, forKey: .tags)
         friends = try container.decode([Friend].self, forKey: .friends)
     }

@@ -65,7 +65,9 @@ struct ContentView: View {
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let decodedData = try JSONDecoder().decode([Person].self, from: data)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let decodedData = try decoder.decode([Person].self, from: data)
             for data in decodedData {
                 modelContext.insert(data)
             }
